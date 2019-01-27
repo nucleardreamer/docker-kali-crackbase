@@ -1,0 +1,17 @@
+---
+version: '3'
+volumes:
+  kali-persist:
+services:
+  kali:
+    build: .
+    image: nucleardreamer/kali-crackbase
+    network_mode: host
+    privileged: true
+    user: "${UID}:${GID}"
+    volumes:
+      - /mnt:/mnt:ro
+      - /dev:/dev
+      - kali-persist:/persist:rw
+      - ./output:/output
+    # command: mkimg /dev/sda mybackup.dd
