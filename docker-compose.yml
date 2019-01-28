@@ -8,10 +8,12 @@ services:
     image: nucleardreamer/kali-crackbase
     network_mode: host
     privileged: true
-    user: "${UID}:${GID}"
+    tty: true
     volumes:
       - /mnt:/mnt:ro
       - /dev:/dev
       - kali-persist:/persist:rw
       - ./output:/output
+    ports:
+      - 9999:9999
     # command: mkimg /dev/sda mybackup.dd
